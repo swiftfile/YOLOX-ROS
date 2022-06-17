@@ -8,14 +8,16 @@
   <license>Apache-2.0 License</license>
   <author email="53618876+fateshelled@users.noreply.github.com">fateshelled</author>
 
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>catkin</buildtool_depend>
 
+  <depend>message_generation</depend>
   <depend>OpenCV</depend>
+  <depend>nodelet</depend>w
+  <depend>roscpp</depend>
+  <depend>image_transport</depend>
 
-  <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
+  <depend>sensor_msgs</depend>
 
-  <export>
-    <build_type>ament_cmake</build_type>
-  </export>
+
+
 </package>

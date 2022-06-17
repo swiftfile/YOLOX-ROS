@@ -1,4 +1,4 @@
-#include "yolox_ros_cpp/yolox_ros_cpp.hpp"
+#include "../include/yolox_ros_cpp/yolox_ros_cpp.hpp"
 
 namespace yolox_ros_cpp{
 
@@ -144,13 +144,12 @@ namespace yolox_ros_cpp{
 
 int main(int argc, char * argv[])
 {
-  rclcpp::init(argc, argv);
-  rclcpp::NodeOptions node_options;
-  node_options.enable_topic_statistics(true);
-  rclcpp::spin(std::make_shared<yolox_ros_cpp::YoloXNode>(node_options));
-  rclcpp::shutdown();
+  ros::init(argc, argv);
+//  ros::NodeOptions node_options;
+//  node_options.enable_topic_statistics(true);
+  ros::spin();
+  ros::shutdown();
   return 0;
 }
 
-RCLCPP_COMPONENTS_REGISTER_NODE(yolox_ros_cpp::YoloXNode)
 

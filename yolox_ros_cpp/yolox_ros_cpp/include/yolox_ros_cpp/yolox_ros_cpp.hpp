@@ -2,23 +2,18 @@
 #define _YOLOX_ROS_CPP_YOLOX_ROS_CPP_HPP
 #include <math.h>
 #include <chrono>
-
-#include <rclcpp/rclcpp.hpp>
-#include <rclcpp_components/register_node_macro.hpp>
+#include <ros/ros.h>
 // #include <ament_index_cpp/get_package_share_directory.hpp>
 
 #include <cv_bridge/cv_bridge.h>
-#include <image_transport/image_transport.hpp>
+#include <image_transport/image_transport.h>
 
-#include "bboxes_ex_msgs/msg/bounding_box.hpp"
-#include "bboxes_ex_msgs/msg/bounding_boxes.hpp"
-
-#include "yolox_cpp/yolox.hpp"
-#include "yolox_cpp/utils.hpp"
+#include <bboxes_ex_msgs/BoundingBox.h>
+#include <bboxes_ex_msgs/BoundingBoxes.h>
 
 namespace yolox_ros_cpp{
 
-    class YoloXNode : public rclcpp::Node
+    class YoloXNode : public ros::Node
     {
     public:
         YoloXNode(const rclcpp::NodeOptions& options);

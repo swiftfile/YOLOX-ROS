@@ -1,4 +1,4 @@
-#include "yolox_cpp/yolox_tensorrt.hpp"
+#include "../include/yolox_cpp/yolox_tensorrt.hpp"
 
 namespace yolox_cpp{
 
