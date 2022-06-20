@@ -70,6 +70,7 @@ docker run --rm -it \
            --device /dev/video0:/dev/video0 \
            c89 \
            /bin/bash
+##TODO: naming image name c89 is my local image. 
 ```
 
 #### Jetson + TensorRT
