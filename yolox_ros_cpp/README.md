@@ -56,19 +56,19 @@ docker run --rm -it \
 #### TensorRT
 ```bash
 # base image is "nvcr.io/nvidia/pytorch:21.09-py3"
-docker pull swiftfile/tensorrt_yolox_ros:latest
+#docker pull swiftfile/tensorrt_yolox_ros:latest
 
 xhost +
 docker run --rm -it \
            --network host \
            --gpus all \
            --privileged \
-           -v $HOME/ros2_ws:/root/ros2_ws \
+           -v $HOME/docker_noetic_ws:/root/docker_noetic_ws \
            -v /tmp/.X11-unix:/tmp/.X11-unix \
-           -w /root/ros2_ws \
+           -w /root/docker_noetic_ws \
            -e DISPLAY=$DISPLAY \
            --device /dev/video0:/dev/video0 \
-           swiftfile/tensorrt_yolox_ros:latest \
+           c89 \
            /bin/bash
 ```
 
