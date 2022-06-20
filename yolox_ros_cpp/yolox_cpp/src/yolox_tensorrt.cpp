@@ -12,6 +12,7 @@ namespace yolox_cpp{
         char *trtModelStream{nullptr};
         size_t size{0};
 
+
         std::ifstream file(path_to_engine, std::ios::binary);
         if (file.good()) {
             file.seekg(0, file.end);

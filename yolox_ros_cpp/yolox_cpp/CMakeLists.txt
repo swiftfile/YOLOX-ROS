@@ -23,7 +23,7 @@ option(YOLOX_USE_TENSORRT "Use TensorRT" ON)
 
 set(ENABLE_OPENVINO OFF)
 set(YOLOX_USE_OPENVINO OFF)
-set(ENABLE_TENSORRT OFF)
+set(ENABLE_TENSORRT ON)
 
 
 # find dependencies
@@ -45,6 +45,7 @@ add_definitions(-DROS1 -DROS_DISTRO=${ROS_DISTRO})
 
 add_library(yolox_cpp
         src/yolox_tensorrt.cpp
+        include/yolox_cpp/yolox_tensorrt.hpp
 #        src/yolox_openvino.cpp
         )
 
@@ -71,8 +72,23 @@ if (NOT ENABLE_OPENVINO AND NOT ENABLE_TENSORRT)
 endif ()
 include_directories(${catkin_INCLUDE_DIRS} ${CUDA_INCLUDE_DIRS})
 
+install(TARGETS yolox_cpp
+        EXPORT export_${PROJECT_NAME}
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION bin
+        INCLUDES DESTINATION include
+)
+install(DIRECTORY
+        DESTINATION share/${PROJECT_NAME}
+)
+install(
+        DIRECTORY include/
+        DESTINATION include
+)
 
 
+target_compile_options(yolox_cpp PUBLIC -Wall)
 target_link_libraries(yolox_cpp
 ${CUDA_LIBRARIES}
 ${OpenCV_LIBRARIES}
