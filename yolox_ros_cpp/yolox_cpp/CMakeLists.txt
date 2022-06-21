@@ -57,10 +57,11 @@ if (YOLOX_USE_TENSORRT)
     find_library(NVPARSERS NAMES nvparsers)
     find_library(NVONNXPARSER NAMES nvonnxparser)
     find_library(NVONNXPARSERRUNTIME NAMES nvonnxparser_runtime)
-    if (CUDA_FOUND AND NVINFER AND NVINFERPLUGIN AND NVPARSERS AND NVONNXPARSER)
+    if (CUDA_FOUND AND NVINFER AND NVINFER,PLUGIN AND NVPARSERS AND NVONNXPARSER)
         set(ENABLE_TENSORRT ON)
         set(SRC ${SRC} src/yolox_tensorrt.cpp)
     endif ()
+    message("hogehoge")
 endif ()
 
 message(STATUS " ENABLE_OPENVINO: ${ENABLE_OPENVINO}")
@@ -82,20 +83,26 @@ install(TARGETS yolox_cpp
 install(DIRECTORY
         DESTINATION share/${PROJECT_NAME}
 )
+
+
 install(
         DIRECTORY include/
         DESTINATION include
+#        ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#        LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#        RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
 )
 
 
 target_compile_options(yolox_cpp PUBLIC -Wall)
 target_link_libraries(yolox_cpp
-${CUDA_LIBRARIES}
-${OpenCV_LIBRARIES}
-nvinfer
-nvinfer_plugin
-nvparsers
-nvonnxparser
+        ${catkin_LIBRARIES}
+        ${CUDA_LIBRARIES}
+        ${OpenCV_LIBRARIES}
+        nvinfer
+        nvinfer_plugin
+        nvparsers
+        nvonnxparser
 # nvonnxparser_runtime
 )
 

@@ -64,7 +64,7 @@ target_link_libraries(yolox_ros_cpp
         ${catkin_LIBRARIES}
         ${CUDA_LIBRARIES}
         ${OpenCV_LIBRARIES}
-#        yolox_cpp
+        yolox_cpp
         )
 
 
